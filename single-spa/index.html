@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <p>hello</p>
+      <div id="shadow"></div>
+    </div>
+
+    <script>
+      let shadowDOM = document
+        .getElementById("shadow")
+        .attachShadow({ mode: "closed" });
+      let pEl = document.createElement("p");
+      let styleEl = document.createElement("style");
+      styleEl.textContent = `
+    p{color:red;}`;
+      pEl.innerHTML = "world";
+      shadowDOM.appendChild(pEl);
+      // 该样式只会作用到影子标签
+      shadowDOM.appendChild(styleEl);
+    </script>
+  </body>
+</html>
